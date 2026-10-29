@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - นักเรียน ม.3 สายวิทย์-คณิต | ยื่นศึกษาต่อระดับ ม.4</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Prompt & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            800: '#102a43',
+                            900: '#0b1b2b',
+                        },
+                        science: {
+                            cyan: '#00b4d8',
+                            blue: '#0077b6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0b1b2b 0%, #0077b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link.active {
+            color: #0077b6;
+            font-weight: 600;
+            border-bottom: 2px solid #0077b6;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white; color: black; }
+            .glass-card { border: none; shadow: none; background: transparent; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-science-cyan selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card transition-all duration-300 no-print shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-navy-900 text-white flex items-center justify-center font-bold text-lg shadow-md">
+                        <i class="fa-solid font-mono fa-atom text-science-cyan"></i>
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold text-navy-900 block leading-none">PORTFOLIO</span>
+                        <span class="text-xs text-slate-500 font-medium">SCIENCE & MATH PROFILE</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation Menu -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+                    <a href="#about" class="hover:text-science-blue transition-colors py-2">ประวัติส่วนตัว</a>
+                    <a href="#achievements" class="hover:text-science-blue transition-colors py-2">ผลงานวิชาการ</a>
+                    <a href="#projects" class="hover:text-science-blue transition-colors py-2">โครงงาน/วิจัย</a>
+                    <a href="#activities" class="hover:text-science-blue transition-colors py-2">กิจกรรม & ทักษะ</a>
+                    <a href="#certificates" class="hover:text-science-blue transition-colors py-2">เกียรติบัตร</a>
+                    <a href="#contact" class="hover:text-science-blue transition-colors py-2">ติดต่อ</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <button onclick="window.print()" class="px-4 py-2 text-xs font-semibold rounded-lg bg-slate-100 text-navy-800 hover:bg-slate-200 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-print"></i> พิมพ์ / PDF
+                    </button>
+                    <a href="#contact" class="px-4 py-2 text-xs font-semibold rounded-lg bg-navy-900 text-white hover:bg-science-blue transition-all shadow-md hover:shadow-lg">
+                        ยื่นสมัคร ม.4
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-navy-900 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">ประวัติส่วนตัว</a>
+            <a href="#achievements" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">ผลงานวิชาการ</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">โครงงาน/วิจัย</a>
+            <a href="#activities" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">กิจกรรม & ทักษะ</a>
+            <a href="#certificates" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">เกียรติบัตร</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">ติดต่อ</a>
+            <div class="pt-2 flex gap-2">
+                <button onclick="window.print()" class="w-full py-2 text-xs font-semibold rounded-lg bg-slate-100 text-navy-800 text-center">
+                    <i class="fa-solid fa-print"></i> พิมพ์ / PDF
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-b from-navy-50/50 via-white to-slate-50 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-10 right-10 w-96 h-96 bg-science-cyan/10 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-10 w-80 h-80 bg-science-blue/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-100/70 border border-navy-200 text-navy-800 text-xs font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-science-blue animate-ping"></span>
+                        พร้อมสำหรับการคัดเลือกศึกษาต่อระดับชั้น ม.4 สายวิทย์-คณิต
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-navy-900 leading-tight">
+                        มุ่งมั่น เรียนรู้ สร้างสรรค์นวัตกรรม <br class="hidden sm:inline"/>
+                        <span class="gradient-text">ด้วยกระบวนการวิทย์-คณิต</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        แฟ้มสะสมผลงานดิจิทัลของ <strong class="font-semibold text-navy-900">นายปัญญกร วิทยาการ (น้องพัท)</strong> นักเรียนชั้น ม.3 โรงเรียนสาธิตวิทยาศาสตร์ ที่มีความสนใจลึกซึ้งด้านวิทยาศาสตร์ โครงงานวิจัย และเทคโนโลยี
+                    </p>
+
+                    <!-- Quick Highlights Badges -->
+                    <div class="grid grid-cols-3 gap-3 pt-2 max-w-md mx-auto lg:mx-0">
+                        <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm text-center">
+                            <span class="text-2xl font-bold text-navy-900 block">3.98</span>
+                            <span class="text-xs text-slate-500">GPAX รวม 5 เทอม</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm text-center">
+                            <span class="text-2xl font-bold text-science-blue block">4.00</span>
+                            <span class="text-xs text-slate-500">GPA วิทย์-คณิต</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm text-center">
+                            <span class="text-2xl font-bold text-navy-800 block">ค่าย 1</span>
+                            <span class="text-xs text-slate-500">สอวน. ดาราศาสตร์</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3 rounded-xl bg-navy-900 text-white font-medium text-sm hover:bg-science-blue transition-all shadow-lg hover:shadow-xl flex items-center gap-2">
+                            <i class="fa-solid fa-flask"></i> ดูโครงงานเด่น
+                        </a>
+                        <button onclick="toggleQRModal()" class="px-6 py-3 rounded-xl bg-white border border-slate-300 text-slate-700 font-medium text-sm hover:bg-slate-50 transition-all flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-qrcode"></i> สแกนดูผ่านมือถือ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column (Profile Card) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-navy-900 to-science-cyan rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                        
+                        <div class="relative glass-card rounded-2xl p-6 shadow-xl border border-white text-center">
+                            <div class="relative w-40 h-40 mx-auto mb-4 rounded-2xl overflow-hidden shadow-md border-2 border-white">
+                                <img src="https://placehold.co/400x400/102a43/ffffff?text=Student+Photo" alt="นายปัญญกร วิทยาการ" class="w-full h-full object-cover">
+                                <div class="absolute bottom-0 inset-x-0 bg-navy-900/80 text-white text-[10px] py-1">
+                                    รูปถ่ายนักเรียน ม.3
+                                </div>
+                            </div>
+                            
+                            <h2 class="text-xl font-bold text-navy-900">นายปัญญกร วิทยาการ</h2>
+                            <p class="text-xs font-medium text-science-blue mb-3">เป้าหมาย: แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์ (SMTE / มหิดลวิทยานุสรณ์)</p>
+                            
+                            <div class="border-t border-slate-200 pt-3 text-xs text-slate-600 space-y-2 text-left">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">โรงเรียนเดิม:</span>
+                                    <span class="font-medium text-slate-800">สาธิตวิทยาศาสตร์ ม.ต้น</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">แผนการเรียนมุ่งหวัง:</span>
+                                    <span class="font-medium text-slate-800">วิทย์-คณิต เข้มข้น</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">ความสนใจหลัก:</span>
+                                    <span class="font-medium text-slate-800">ฟิสิกส์, ดาราศาสตร์, AI/Data</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex justify-around text-slate-500 text-sm">
+                                <a href="mailto:panyakorn.example@email.com" class="hover:text-science-blue"><i class="fa-solid fa-envelope"></i></a>
+                                <a href="tel:0812345678" class="hover:text-science-blue"><i class="fa-solid fa-phone"></i></a>
+                                <a href="#" class="hover:text-science-blue"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" class="hover:text-science-blue"><i class="fa-solid fa-file-pdf"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: ABOUT ME & 5W1H FRAMEWORK -->
+    <section id="about" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-science-blue mb-2">ABOUT ME & GOALS</h2>
+                <h3 class="text-3xl font-bold text-navy-900">เกี่ยวกับฉัน & เป้าหมายการศึกษา (5W1H)</h3>
+                <div class="w-16 h-1 bg-science-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- SOP Statement Box -->
+            <div class="mb-12 p-6 md:p-8 rounded-2xl bg-navy-900 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 text-slate-800 opacity-20 text-9xl">
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+                <h4 class="text-lg font-semibold text-science-cyan mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-compass"></i> Statement of Purpose (แรงบันดาลใจและเป้าหมาย)
+                </h4>
+                <p class="text-slate-200 leading-relaxed text-sm sm:text-base font-light">
+                    "ผมมีความเชื่อมั่นว่ากระบวนการคิดทางวิทยาศาสตร์และการวิเคราะห์เชิงคณิตศาสตร์เป็นเครื่องมือที่ทรงพลังในการแก้ปัญหาของมนุษย์ ตลอดระดับชั้น ม.ต้น ผมได้ฝึกฝนทักษะผ่านการลงมือทำจริง ทั้งการเข้าร่วมค่ายสอวน. การทำโครงงานนวัตกรรม และการแข่งขันทักษะวิชาการ การศึกษาต่อชั้น ม.4 สายวิทย์-คณิต ในสถาบันที่มีความพร้อม จะเป็นรากฐานสำคัญที่ช่วยพัฒนาศักยภาพของผมให้พร้อมก้าวสู่การเป็นนักวิจัย/นักวิทยาศาสตร์เพื่อสร้างคุณประโยชน์ให้สังคมในอนาคต"
+                </p>
+            </div>
+
+            <!-- 5W1H Matrix Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- WHO -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold mb-4">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h5 class="font-bold text-navy-900 mb-1">WHO (ตัวตนของผม)</h5>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        นักเรียน ม.3 สายวิทย์-คณิต ที่มีความรับผิดชอบ ช่างสังเกต ละเอียดรอบคอบ และชอบตั้งคำถามหาเหตุผลทางวิทยาศาสตร์
+                    </p>
+                </div>
+
+                <!-- WHAT -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold mb-4">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h5 class="font-bold text-navy-900 mb-1">WHAT (เป้าหมาย)</h5>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        เข้าศึกษาต่อ ม.4 สายวิทย์-คณิต เข้มข้น เพื่อสั่งสมความรู้ระดับสูง และเตรียมตัวสู่ระดับอุดมศึกษาด้าน STEM/นวัตกรรม
+                    </p>
+                </div>
+
+                <!-- WHERE -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold mb-4">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h5 class="font-bold text-navy-900 mb-1">WHERE (สถานศึกษาเป้าหมาย)</h5>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        โรงเรียนชั้นนำระดับประเทศ หรือห้องเรียนพิเศษวิทยาศาสตร์-คณิตศาสตร์ (SMTE) ที่ส่งเสริมการวิจัยและการแข่งขัน
+                    </p>
+                </div>
+
+                <!-- WHEN -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold mb-4">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h5 class="font-bold text-navy-900 mb-1">WHEN (ระยะเวลาเตรียมพร้อม)</h5>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        พร้อมเข้าศึกษาต่อในปีการศึกษา 2568 โดยได้เตรียมความพร้อมทั้งด้านเนื้อหาและโครงงานย้อนหลังต่อเนื่อง 3 ปี
+                    </p>
+                </div>
+
+                <!-- WHY -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold mb-4">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+                    <h5 class="font-bold text-navy-900 mb-1">WHY (ทำไมต้องเลือกผม)</h5>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        มีเกรดเฉลี่ยวิทย์-คณิต 4.00 ผ่านค่าย สอวน. และมีผลงานโครงงานที่นำไปประยุกต์ใช้จริงได้ ไม่ใช่เพียงความรู้ในตำรา
+                    </p>
+                </div>
+
+                <!-- HOW -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold mb-4">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h5 class="font-bold text-navy-900 mb-1">HOW (วิธีการเรียนรู้)</h5>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        ใช้การเรียนรู้แบบ Project-Based Learning, การตั้งสมมติฐาน การทดลองจริง และการประมวลผลข้อมูลด้วยคอมพิวเตอร์
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ACADEMIC & STEM ACHIEVEMENTS -->
+    <section id="achievements" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-science-blue mb-2">ACADEMIC EXCELLENCE</h2>
+                <h3 class="text-3xl font-bold text-navy-900">ผลงานวิชาการและการแข่งขันวิทย์-คณิต</h3>
+                <div class="w-16 h-1 bg-science-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Academic Stats Box -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-lg font-bold text-navy-900 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-graduation-cap text-science-blue"></i> ผลการเรียนระดับชั้น ม.1 - ม.3
+                        </h4>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl bg-navy-50/60 border border-navy-100">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-medium text-slate-700">GPAX รวม 5 เทอม</span>
+                                    <span class="text-xl font-extrabold text-navy-900">3.98</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2 mt-2">
+                                    <div class="bg-navy-900 h-2 rounded-full" style="width: 99.5%"></div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-navy-50/60 border border-navy-100">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-medium text-slate-700">กลุ่มสาระวิทยาศาสตร์</span>
+                                    <span class="text-xl font-extrabold text-science-blue">4.00</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2 mt-2">
+                                    <div class="bg-science-blue h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-navy-50/60 border border-navy-100">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-medium text-slate-700">กลุ่มสาระคณิตศาสตร์</span>
+                                    <span class="text-xl font-extrabold text-science-blue">4.00</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2 mt-2">
+                                    <div class="bg-science-blue h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <span class="text-xs text-slate-500 block">หมายเหตุ: ได้รับรางวัลนักเรียนเรียนดีเยี่ยมต่อเนื่อง 3 ปีการศึกษา</span>
+                    </div>
+                </div>
+
+                <!-- Timeline / Key Achievements List -->
+                <div class="lg:col-span-2 space-y-4">
+                    
+                    <!-- Item 1: สอวน. -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-science-blue transition-all flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold text-xl shrink-0">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex flex-wrap justify-between items-start gap-2">
+                                <h4 class="text-base font-bold text-navy-900">ผ่านการคัดเลือก ค่าย 1 สอวน. สาขาดาราศาสตร์</h4>
+                                <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800">ปีการศึกษา 2566</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                ผ่านการสอบคัดเลือกเข้าอบรมค่ายโอลิมปิกวิชาการ สาขาดาราศาสตร์ ระดับมัธยมศึกษาตอนต้น ได้ศึกษาเรื่องพิกัดทรงกลมฟ้า พลศาสตร์ดาวเคราะห์ และการประมวลผลข้อมูลการสังเกตการณ์
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: แข่งขันวิทยาศาสตร์ -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-science-blue transition-all flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-science-blue/10 text-science-blue flex items-center justify-center font-bold text-xl shrink-0">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex flex-wrap justify-between items-start gap-2">
+                                <h4 class="text-base font-bold text-navy-900">รางวัลเหรียญทอง การแข่งขันโครงงานวิทยาศาสตร์</h4>
+                                <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">งานศิลปหัตถกรรมนักเรียน</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                ได้รับรางวัลเหรียญทอง ระดับเขตพื้นที่การศึกษา ประเภทโครงงานวิทยาศาสตร์ประเภทสิ่งประดิษฐ์ ม.1-ม.3 จากการพัฒนานวัตกรรมเครื่องกรองน้ำอัจฉริยะ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: ตอบปัญหาคณิตศาสตร์ -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-science-blue transition-all flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center font-bold text-xl shrink-0">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex flex-wrap justify-between items-start gap-2">
+                                <h4 class="text-base font-bold text-navy-900">รองชนะเลิศอันดับ 1 การแข่งขันสิริธรคณิตศาสตร์</h4>
+                                <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">ระดับจังหวัด</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                ทดสอบทักษะแก้โจทย์ปัญหาคณิตศาสตร์ระดับสูง เรขาคณิตวิเคราะห์ และพีชคณิตเชิงสร้างสรรค์
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: PROJECTS & SCIENCE SHOWCASE -->
+    <section id="projects" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-science-blue mb-2">RESEARCH & INNOVATION</h2>
+                <h3 class="text-3xl font-bold text-navy-900">โครงงานวิทยาศาสตร์และการทดลองเด่น</h3>
+                <p class="text-slate-500 text-xs sm:text-sm mt-2">ประยุกต์ใช้กระบวนการทางวิทยาศาสตร์ การออกแบบวิศวกรรม และการวิเคราะห์สถิติ</p>
+                <div class="w-16 h-1 bg-science-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-navy-900 overflow-hidden">
+                            <img src="https://placehold.co/600x400/102a43/00b4d8?text=Smart+Water+Filter+Project" alt="โครงงานเครื่องกรองน้ำ" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-navy-900/90 text-science-cyan border border-science-cyan/30">
+                                สิ่งประดิษฐ์วิทยศาสตร์
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-navy-900 mb-2">
+                                ชุดกรองน้ำและวัดคุณภาพน้ำอัตโนมัติด้วยระบบ IoT
+                            </h4>
+                            
+                            <!-- Problem - Solution - Impact Framework -->
+                            <div class="space-y-3 mt-4 text-xs">
+                                <div class="p-3 rounded-lg bg-slate-50">
+                                    <span class="font-bold text-rose-600 block mb-1"><i class="fa-solid fa-triangle-exclamation"></i> Problem:</span>
+                                    น้ำดื่มในโรงอาหารมีความขุ่นและค่า pH เปลี่ยนแปลงตามสภาพอากาศ
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-50">
+                                    <span class="font-bold text-science-blue block mb-1"><i class="fa-solid fa-microchip"></i> Methodology:</span>
+                                    ใช้ไส้กรองเซรามิกคู่กับเซนเซอร์ TDS/pH ส่งค่าประมวลผลผ่าน Microcontroller Arduino
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-50">
+                                    <span class="font-bold text-emerald-600 block mb-1"><i class="fa-solid fa-chart-line"></i> Impact:</span>
+                                    ลดความขุ่นของน้ำได้ 94% และแจ้งเตือนเมื่อต้องเปลี่ยนไส้กรองได้แม่นยำ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('project1')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-navy-900 hover:text-white text-navy-800 text-xs font-semibold transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-book-open"></i> อ่านรายงานโครงงานฉบับเต็ม
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-navy-900 overflow-hidden">
+                            <img src="https://placehold.co/600x400/0b1b2b/0077b6?text=Math+Modeling+Project" alt="แบบจำลองคณิตศาสตร์" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold bg-navy-900/90 text-science-cyan border border-science-cyan/30">
+                                คณิตศาสตร์ประยุกต์
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-navy-900 mb-2">
+                                แบบจำลองคณิตศาสตร์ในการคาดการณ์ปริมาณขยะพลาสติกในโรงเรียน
+                            </h4>
+                            
+                            <!-- Problem - Solution - Impact Framework -->
+                            <div class="space-y-3 mt-4 text-xs">
+                                <div class="p-3 rounded-lg bg-slate-50">
+                                    <span class="font-bold text-rose-600 block mb-1"><i class="fa-solid fa-triangle-exclamation"></i> Problem:</span>
+                                    ขยะพลาสติกในโรงเรียนมีปริมาณล้นถังในบางช่วงเวลา ทำให้ออแกไนซ์การเก็บขยะไม่ทัน
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-50">
+                                    <span class="font-bold text-science-blue block mb-1"><i class="fa-solid fa-square-root-variable"></i> Methodology:</span>
+                                    เก็บข้อมูล 30 วัน แล้วสร้างสมการการถดถอย (Linear & Exponential Regression Model)
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-50">
+                                    <span class="font-bold text-emerald-600 block mb-1"><i class="fa-solid fa-chart-line"></i> Impact:</span>
+                                    พยากรณ์ปริมาณขยะได้แม่นยำ 88% ช่วยโรงเรียนปรับรอบการเก็บขยะอย่างมีประสิทธิภาพ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openProjectModal('project2')" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-navy-900 hover:text-white text-navy-800 text-xs font-semibold transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-book-open"></i> อ่านรายงานโครงงานฉบับเต็ม
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: ACTIVITIES & SOFT SKILLS -->
+    <section id="activities" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-science-blue mb-2">LEADERSHIP & SKILLS</h2>
+                <h3 class="text-3xl font-bold text-navy-900">กิจกรรม ความเป็นผู้นำ และทักษะ Soft Skills</h3>
+                <div class="w-16 h-1 bg-science-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Activity 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-white flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h4 class="font-bold text-navy-900 mb-2">ประธานชมรมวิทยาศาสตร์รุ่นเยาว์</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        นำทีมจัดกิจกรรม "Science Week Show" สำหรับน้องๆ ม.1 มีผู้เข้าร่วมกว่า 300 คน ฝึกฝนทักษะการบริหารจัดการ และการสื่อสารวิทยาศาสตร์
+                    </p>
+                    <span class="text-[11px] font-semibold text-science-blue bg-navy-50 px-2.5 py-1 rounded-full">Leadership & Management</span>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-white flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h4 class="font-bold text-navy-900 mb-2">ติวเตอร์จิตอาสา Math & Science</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        ใช้เวลาว่างหลังเลิกเรียนติวปรับพื้นฐานวิชาคณิตศาสตร์และฟิสิกส์ให้เพื่อนในห้องที่มีผลการเรียนอ่อน ช่วยให้เพื่อนผ่านการสอบแก้ตัว 100%
+                    </p>
+                    <span class="text-[11px] font-semibold text-science-blue bg-navy-50 px-2.5 py-1 rounded-full">Empathy & Teaching</span>
+                </div>
+
+                <!-- Activity 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-white flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h4 class="font-bold text-navy-900 mb-2">จิตอาสาพัฒนาสิ่งแวดล้อมชุมชน</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        ร่วมกับเทศบาลวิเคราะห์คุณภาพดินและปลูกป่าชายเลนเพื่ออนุรักษ์ระบบนิเวศ ใช้ความรู้วิทยาศาสตร์ฟื้นฟูธรรมชาติอย่างยั่งยืน
+                    </p>
+                    <span class="text-[11px] font-semibold text-science-blue bg-navy-50 px-2.5 py-1 rounded-full">Social Responsibility</span>
+                </div>
+            </div>
+
+            <!-- Soft & Hard Skills Progress/Badges -->
+            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <h4 class="text-base font-bold text-navy-900 mb-6 text-center">ทักษะความสามารถเด่น (Skills Matrix)</h4>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                        <i class="fa-solid fa-brain text-2xl text-navy-900 mb-2"></i>
+                        <span class="block text-xs font-bold text-slate-800">Critical Thinking</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                        <i class="fa-solid fa-chart-pie text-2xl text-science-blue mb-2"></i>
+                        <span class="block text-xs font-bold text-slate-800">Data Analysis</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                        <i class="fa-solid fa-code text-2xl text-navy-900 mb-2"></i>
+                        <span class="block text-xs font-bold text-slate-800">Python Basic</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                        <i class="fa-solid fa-flask-vial text-2xl text-science-blue mb-2"></i>
+                        <span class="block text-xs font-bold text-slate-800">Lab Techniques</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                        <i class="fa-solid fa-comments text-2xl text-navy-900 mb-2"></i>
+                        <span class="block text-xs font-bold text-slate-800">Scientific Comms</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
+                        <i class="fa-solid fa-people-group text-2xl text-science-blue mb-2"></i>
+                        <span class="block text-xs font-bold text-slate-800">Teamwork</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CERTIFICATES VAULT -->
+    <section id="certificates" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-science-blue mb-2">VERIFIED CERTIFICATES</h2>
+                <h3 class="text-3xl font-bold text-navy-900">คลังเกียรติบัตรออนไลน์</h3>
+                <p class="text-slate-500 text-xs sm:text-sm mt-2">เลือกกรองตามหมวดหมู่เพื่อดูเอกสารอ้างอิง</p>
+                <div class="w-16 h-1 bg-science-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center gap-2 mb-8 flex-wrap">
+                <button onclick="filterCerts('all')" class="cert-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-navy-900 text-white transition-all">ทั้งหมด</button>
+                <button onclick="filterCerts('olympiad')" class="cert-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">สอวน. & โอลิมปิก</button>
+                <button onclick="filterCerts('academic')" class="cert-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">การแข่งขันวิชาการ</button>
+                <button onclick="filterCerts('activity')" class="cert-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">กิจกรรม & จิตอาสา</button>
+            </div>
+
+            <!-- Certificates Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="cert-grid">
+                
+                <!-- Cert 1 -->
+                <div class="cert-card olympiad bg-slate-50 rounded-2xl border border-slate-200 p-4 hover:shadow-lg transition-all">
+                    <div class="h-40 bg-slate-200 rounded-xl mb-3 overflow-hidden relative">
+                        <img src="https://placehold.co/400x300/102a43/ffffff?text=POSN+Certificate" alt="เกียรติบัตร สอวน." class="w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 px-2 py-1 rounded bg-navy-900/80 text-white text-[10px]">สอวน.</span>
+                    </div>
+                    <h5 class="font-bold text-sm text-navy-900">วุฒิบัตรค่าย 1 สอวน. ดาราศาสตร์</h5>
+                    <p class="text-xs text-slate-500 mt-1">มูลนิธิ สอวน. ร่วมกับ มหาวิทยาลัยศูนย์สอบ</p>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="cert-card academic bg-slate-50 rounded-2xl border border-slate-200 p-4 hover:shadow-lg transition-all">
+                    <div class="h-40 bg-slate-200 rounded-xl mb-3 overflow-hidden relative">
+                        <img src="https://placehold.co/400x300/0077b6/ffffff?text=Science+Fair+Award" alt="เกียรติบัตร โครงงานวิทย์" class="w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 px-2 py-1 rounded bg-science-blue/80 text-white text-[10px]">วิชาการ</span>
+                    </div>
+                    <h5 class="font-bold text-sm text-navy-900">เหรียญทอง โครงงานวิทยาศาสตร์</h5>
+                    <p class="text-xs text-slate-500 mt-1">งานศิลปหัตถกรรมนักเรียน ระดับเขตพื้นที่ฯ</p>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="cert-card academic bg-slate-50 rounded-2xl border border-slate-200 p-4 hover:shadow-lg transition-all">
+                    <div class="h-40 bg-slate-200 rounded-xl mb-3 overflow-hidden relative">
+                        <img src="https://placehold.co/400x300/334e68/ffffff?text=Math+Competition" alt="เกียรติบัตร แข่งคณิต" class="w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 px-2 py-1 rounded bg-navy-800/80 text-white text-[10px]">วิชาการ</span>
+                    </div>
+                    <h5 class="font-bold text-sm text-navy-900">รองชนะเลิศ สิรินธรคณิตศาสตร์</h5>
+                    <p class="text-xs text-slate-500 mt-1">การแข่งขันตอบปัญหาคณิตศาสตร์ระดับจังหวัด</p>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="cert-card activity bg-slate-50 rounded-2xl border border-slate-200 p-4 hover:shadow-lg transition-all">
+                    <div class="h-40 bg-slate-200 rounded-xl mb-3 overflow-hidden relative">
+                        <img src="https://placehold.co/400x300/0b1b2b/ffffff?text=Volunteer+Certificate" alt="เกียรติบัตร จิตอาสา" class="w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 px-2 py-1 rounded bg-slate-700/80 text-white text-[10px]">กิจกรรม</span>
+                    </div>
+                    <h5 class="font-bold text-sm text-navy-900">ประกาศนียบัตรจิตอาสาดีเด่น</h5>
+                    <p class="text-xs text-slate-500 mt-1">การจัดกิจกรรมติวเพื่อเพื่อน ยอดรวม 40 ชั่วโมง</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CONTACT & FOOTER -->
+    <section id="contact" class="py-20 bg-navy-900 text-white relative no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-wider text-science-cyan">GET IN TOUCH</span>
+                    <h3 class="text-3xl font-bold">ข้อมูลการติดต่อ & เอกสารอ้างอิง</h3>
+                    <p class="text-slate-300 text-sm font-light leading-relaxed">
+                        ท่านกรรมการสามารถติดต่อสอบถามข้อมูลเพิ่มเติม หรือขอเอกสารยืนยันผลงาน/ระเบียนแสดงผลการเรียน (ปพ.1) ฉบับเต็มได้ตามช่องทางด้านล่างนี้
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-science-cyan">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">อีเมลติดต่อ</span>
+                                <span class="text-sm font-medium">panyakorn.student@example.com</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-science-cyan">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">เบอร์โทรศัพท์</span>
+                                <span class="text-sm font-medium">081-234-5678 (นักเรียน) / 089-876-5432 (ผู้ปกครอง)</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-science-cyan">
+                                <i class="fa-solid fa-folder-open"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">คลังเอกสาร Drive (ปพ.1 / เอกสารฉบับเต็ม)</span>
+                                <a href="#" class="text-sm font-medium text-science-cyan hover:underline">bit.ly/panyakorn-portfolio-drive</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form / Quick Note -->
+                <div class="glass-card rounded-2xl p-8 text-slate-800">
+                    <h4 class="text-lg font-bold text-navy-900 mb-4">ส่งข้อความถึงผู้สมัคร</h4>
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">ชื่อผู้ติดต่อ / กรรมการสอบสัมภาษณ์</label>
+                            <input type="text" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-science-blue focus:outline-none" placeholder="ระบุชื่อของท่าน">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">อีเมลตอบกลับ</label>
+                            <input type="email" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-science-blue focus:outline-none" placeholder="example@school.ac.th">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">ข้อความ / นัดหมายสัมภาษณ์</label>
+                            <textarea rows="3" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-science-blue focus:outline-none" placeholder="พิมพ์ข้อความที่ต้องการแจ้งนักเรียน..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-xl bg-navy-900 text-white font-medium text-sm hover:bg-science-blue transition-all shadow-md">
+                            ส่งข้อความ
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Copyright Footer -->
+            <div class="border-t border-slate-800 mt-16 pt-8 text-center text-xs text-slate-400">
+                © 2026 Panyakorn Wittayakarn - Portfolio for High School Admission (ม.4). All rights reserved.
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT MODAL (Popup) -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- QR CODE MODAL -->
+    <div id="qr-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-xs w-full p-6 relative shadow-2xl text-center">
+            <button onclick="toggleQRModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-800 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h4 class="font-bold text-navy-900 mb-2">สแกนดูผ่านมือถือ</h4>
+            <p class="text-xs text-slate-500 mb-4">สแกน QR Code นี้เพื่อเปิด Portfolio บนสมาร์ทโฟน</p>
+            <div class="p-4 bg-slate-100 rounded-xl inline-block mb-3">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://portfolio-preview.example.com" alt="QR Code" class="w-44 h-44">
+            </div>
+            <p class="text-[11px] text-slate-400">URL: portfolio.panyakorn.dev</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Certificate Filter Function
+        function filterCerts(category) {
+            const cards = document.querySelectorAll('.cert-card');
+            const btns = document.querySelectorAll('.cert-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-navy-900', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+
+            event.target.classList.remove('bg-slate-100', 'text-slate-600');
+            event.target.classList.add('bg-navy-900', 'text-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Project Modal Logic
+        const projectsData = {
+            project1: {
+                title: "ชุดกรองน้ำและวัดคุณภาพน้ำอัตโนมัติด้วยระบบ IoT",
+                type: "โครงงานวิทยาศาสตร์ประเภทสิ่งประดิษฐ์",
+                content: `
+                    <div class="space-y-4">
+                        <span class="px-2.5 py-1 rounded bg-science-blue/10 text-science-blue text-xs font-semibold">หมวดสิ่งประดิษฐ์ & IoT</span>
+                        <h3 class="text-xl font-bold text-navy-900">รายงานสรุปโครงงานวิจัย</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            โครงงานนี้จัดทำขึ้นเนื่องจากสังเกตเห็นว่าคุณภาพน้ำดื่มในโรงเรียนมีความขุ่นและมีค่า pH ไม่สม่ำเสมอตามฤดูกาล ผู้จัดทำจึงได้ออกแบบและพัฒนานวัตกรรมเครื่องกรองน้ำอัจฉริยะขนาดเล็ก
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-xl space-y-2 text-xs">
+                            <h5 class="font-bold text-navy-900">สรุปขั้นตอนทางวิทยาศาสตร์:</h5>
+                            <ul class="list-disc list-inside space-y-1 text-slate-600">
+                                <li>ออกแบบระบบการกรอง 3 ชั้น (ถ่านกัมมันต์, เรซิน, และเซรามิกไส้กรอง)</li>
+                                <li>ติดตั้งระบบวัดค่า TDS (Total Dissolved Solids) และ pH Sensor</li>
+                                <li>เขียนโปรแกรมด้วย ภาษา C/C++ บนบอร์ด ESP32 ส่งข้อมูลเข้า LINE Notify</li>
+                            </ul>
+                        </div>
+                        <div class="text-xs text-slate-500">
+                            <strong>อาจารย์ที่ปรึกษา:</strong> ดร.สมชาย วิทยาการ (ครูวิทยฐานะชำนาญการพิเศษ)
+                        </div>
+                    </div>
+                `
+            },
+            project2: {
+                title: "แบบจำลองคณิตศาสตร์ในการคาดการณ์ปริมาณขยะพลาสติกในโรงเรียน",
+                type: "โครงงานคณิตศาสตร์ประยุกต์",
+                content: `
+                    <div class="space-y-4">
+                        <span class="px-2.5 py-1 rounded bg-indigo-100 text-indigo-700 text-xs font-semibold">หมวดคณิตศาสตร์ประยุกต์</span>
+                        <h3 class="text-xl font-bold text-navy-900">รายงานสรุปโครงงานวิจัย</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            โครงงานนี้มุ่งเน้นการใช้ทักษะทางสถิติและการสร้างแบบจำลองคณิตศาสตร์ (Mathematical Modeling) เพื่อพฤติกรรมปริมาณขยะพลาสติกประเภทใช้ครั้งเดียวทิ้งในโรงเรียน
+                        </p>
+                        <div class="bg-slate-50 p-4 rounded-xl space-y-2 text-xs">
+                            <h5 class="font-bold text-navy-900">การดำเนินงานและผลลัพธ์:</h5>
+                            <ul class="list-disc list-inside space-y-1 text-slate-600">
+                                <li>เก็บรวบรวมข้อมูลน้ำหนักขยะรายวันเป็นเวลา 30 วันทำการ</li>
+                                <li>วิเคราะห์ความสัมพันธ์เชิงเส้นตรง (Linear Regression) และ Exponential Analysis</li>
+                                <li>สร้างสมการทำนายปริมาณขยะล่วงหน้าโดยมีค่า $R^2 = 0.88$</li>
+                            </ul>
+                        </div>
+                        <div class="text-xs text-slate-500">
+                            <strong>อาจารย์ที่ปรึกษา:</strong> อ.วิภาดา คำนวณศิลป์
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function openProjectModal(projectId) {
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-content');
+            
+            if (projectsData[projectId]) {
+                content.innerHTML = projectsData[projectId].content;
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // Toggle QR Modal
+        function toggleQRModal() {
+            const qrModal = document.getElementById('qr-modal');
+            qrModal.classList.toggle('hidden');
+        }
+
+        // Form Submit Notice
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('ขอบคุณสำหรับข้อความครับ! ระบบจำลองส่งข้อความเรียบร้อยแล้ว');
+            event.target.reset();
+        }
+
+        // Close Modals on Outer Click
+        window.onclick = function(event) {
+            const projectModal = document.getElementById('project-modal');
+            const qrModal = document.getElementById('qr-modal');
+            if (event.target === projectModal) {
+                closeProjectModal();
+            }
+            if (event.target === qrModal) {
+                toggleQRModal();
+            }
+        }
+    </script>
+</body>
+</html>
